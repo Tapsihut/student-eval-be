@@ -16,7 +16,7 @@ class AdvisingService
      */
     public function generateAdvising($curriculum, Collection $ocrRecords): array
     {
-        // 🧾 Get all curriculum subject
+        // 🧾 Get all curriculum subjects
         $subjects = Subject::where('curriculum_id', $curriculum->id)
             ->with('prerequisites')
             ->get();
