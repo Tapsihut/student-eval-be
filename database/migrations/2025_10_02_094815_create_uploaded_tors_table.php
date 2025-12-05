@@ -1,0 +1,44 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('uploaded_tors', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('file_path')->nullable();
+            $table->string('public_id')->nullable();
+            $table->string('batch_id', 36)->nullable(); // <- Added batch_id
+            $table->enum('status', [
+                'submitted',
+                'pending',
+                'analyzed',
+                'failed',
+                'approved',
+                'processing',
+                'advising',
+                'done',
+                'rejected'
+            ])->default('submitted');
+            $table->text('remarks')->nullable();
+            $table->float('percent_grade')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('uploaded_tors');
+    }
+};

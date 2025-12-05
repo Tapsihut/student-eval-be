@@ -1,0 +1,6 @@
+To assess the effectiveness of the chosen Tesseract OCR, the system extracts and normalizes text using PHP string processing, Regex, and fuzzy matching techniques within the Laravel framework, utilizing Composer-installed packages to minimize errors in course advising.
+
+Tesseract OCR via OpenRouter 
+Laravel (PHP) 
+Regex (clear unwanted character)
+String normalization + fuzzy matching
